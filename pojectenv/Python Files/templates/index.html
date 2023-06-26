@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <h1>Welcome to the Time Tracker</h1>
+    <form method="POST" action="/start">
+        <label for="project_id">Start Project:</label><br>
+        <input type="text" id="project_id" name="project_id"><br>
+        <input type="submit" value="Start">
+    </form>
+    <form method="POST" action="/stop">
+        <label for="entry_id">Stop Entry:</label><br>
+        <input type="text" id="entry_id" name="entry_id"><br>
+        <input type="submit" value="Stop">
+    </form>
+    <h2>Your Entries:</h2>
+    <ul>
+        {% for entry in entries %}
+        <li>Start: {{ entry.start_time }}, End: {{ entry.end_time }}, Project: {{ entry.project.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/logout">Logout</a>
+</body>
+</html>
